@@ -12,5 +12,4 @@ enum Theme {
     static let detailBackground = Color("detailBackground")
     static let cardAccent = Color("cardAccent")
     static let text = Color("text")
-
 }
