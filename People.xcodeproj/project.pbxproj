@@ -17,8 +17,11 @@
 		ABF81D1C28A822D0004212FA /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = ABF81D1B28A822D0004212FA /* Users.json */; };
 		ABF81D1F28A8238F004212FA /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF81D1E28A8238F004212FA /* UserDetail.swift */; };
 		ABF81D2128A823C1004212FA /* UsersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF81D2028A823C1004212FA /* UsersResponse.swift */; };
-		ABF81D2428A8243A004212FA /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF81D2328A8243A004212FA /* Models.swift */; };
+		ABF81D2428A8243A004212FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF81D2328A8243A004212FA /* User.swift */; };
 		ABF81D2728A82462004212FA /* StaticJSONMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF81D2628A82462004212FA /* StaticJSONMapper.swift */; };
+		ABF81D2928A9AE6E004212FA /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF81D2828A9AE6E004212FA /* PeopleView.swift */; };
+		ABF81D2B28A9B615004212FA /* PersonCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF81D2A28A9B615004212FA /* PersonCellView.swift */; };
+		ABF81D2E28A9B76E004212FA /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF81D2D28A9B76E004212FA /* PillView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +37,11 @@
 		ABF81D1B28A822D0004212FA /* Users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Users.json; sourceTree = "<group>"; };
 		ABF81D1E28A8238F004212FA /* UserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
 		ABF81D2028A823C1004212FA /* UsersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersResponse.swift; sourceTree = "<group>"; };
-		ABF81D2328A8243A004212FA /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		ABF81D2328A8243A004212FA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ABF81D2628A82462004212FA /* StaticJSONMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticJSONMapper.swift; sourceTree = "<group>"; };
+		ABF81D2828A9AE6E004212FA /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
+		ABF81D2A28A9B615004212FA /* PersonCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCellView.swift; sourceTree = "<group>"; };
+		ABF81D2D28A9B76E004212FA /* PillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 		ABBBCE7328A813A7009B7580 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				ABF81D2C28A9B764004212FA /* Views */,
 				ABF81D2528A82453004212FA /* Mapper */,
 				ABF81D2228A82432004212FA /* Model */,
 			);
@@ -153,6 +160,8 @@
 		ABBBCE7928A813C6009B7580 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ABF81D2828A9AE6E004212FA /* PeopleView.swift */,
+				ABF81D2A28A9B615004212FA /* PersonCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,7 +201,7 @@
 		ABF81D2228A82432004212FA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ABF81D2328A8243A004212FA /* Models.swift */,
+				ABF81D2328A8243A004212FA /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -203,6 +212,14 @@
 				ABF81D2628A82462004212FA /* StaticJSONMapper.swift */,
 			);
 			path = Mapper;
+			sourceTree = "<group>";
+		};
+		ABF81D2C28A9B764004212FA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ABF81D2D28A9B76E004212FA /* PillView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,12 +296,15 @@
 			files = (
 				ABF81D2728A82462004212FA /* StaticJSONMapper.swift in Sources */,
 				AB45278028A2D95B00BC7156 /* Symbols.swift in Sources */,
+				ABF81D2928A9AE6E004212FA /* PeopleView.swift in Sources */,
 				AB45278328A2DB0800BC7156 /* Theme.swift in Sources */,
 				AB45277428A2D54100BC7156 /* ContentView.swift in Sources */,
 				ABF81D1F28A8238F004212FA /* UserDetail.swift in Sources */,
+				ABF81D2E28A9B76E004212FA /* PillView.swift in Sources */,
+				ABF81D2B28A9B615004212FA /* PersonCellView.swift in Sources */,
 				AB45277228A2D54100BC7156 /* PeopleApp.swift in Sources */,
 				ABF81D2128A823C1004212FA /* UsersResponse.swift in Sources */,
-				ABF81D2428A8243A004212FA /* Models.swift in Sources */,
+				ABF81D2428A8243A004212FA /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
