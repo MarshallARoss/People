@@ -45,15 +45,9 @@ struct PersonCellView: View {
 
 struct PersonCell_Previews: PreviewProvider {
     
-    static var previewUser: User {
-        let users = try! StaticJSONMapper.decode(file: "Users", type: UsersResponse.self)
-        
-        return users.data.first!
-    }
-   
     static var previews: some View {
-        PersonCellView(user: previewUser)
-            .padding()
+        PersonCellView(user: dev.previewUser)
+            .frame(width: 200, height: 400)
             .previewLayout(.sizeThatFits)
     }
 }
