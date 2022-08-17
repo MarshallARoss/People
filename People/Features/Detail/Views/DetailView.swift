@@ -9,7 +9,9 @@ import SwiftUI
 
 struct DetailView: View {
     
-    let user: User
+    let user: UserDetailResponse
+    @State private var userInfo: UserDetailResponse?
+    
     
     var body: some View {
         ZStack {
@@ -18,8 +20,10 @@ struct DetailView: View {
                 
                 VStack(alignment: .leading, spacing: 18){
                     
+                   avatarImage
+                    
                     Group {
-                    userInfo
+                    userList
                     link
                     }
                     .padding(.horizontal, 8)
@@ -30,16 +34,25 @@ struct DetailView: View {
                 .padding()
             }
         }
+        .navigationBarTitle(user.data.firstName ?? "Details")
+        .onAppear {
+            do {
+                userInfo = try StaticJSONMapper.decode(file: "SingleUser", type: UserDetailResponse.self)
+            } catch {
+                //Handle Errors
+                print(error)
+            }
+        }
     }
 }
 
 private extension DetailView {
     
-    var userInfo: some View {
+    var userList: some View {
         
         VStack(alignment: .leading, spacing: 8) {
             
-            PillView(id: 0)
+            PillView(id: userInfo?.data.id ?? 0)
             
             Group {
                 firstName
@@ -52,14 +65,39 @@ private extension DetailView {
         }
     }
     
+    @ViewBuilder
+    var avatarImage: some View {
+        if let avatarAbsoluteString = userInfo?.data.avatar,
+           let avatarURL = URL(string: avatarAbsoluteString) {
+            AsyncImage(url: avatarURL) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 250)
+                    .clipped()
+            } placeholder: {
+                ProgressView()
+                    .frame(width: .infinity, height: 250)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        }
+    }
+    
+    @ViewBuilder
     var link: some View {
-        Link(destination: .init(string: "https://reqres.in/#support-heading")!) {
+        
+        if let supportAbsoluteString = userInfo?.support.url,
+           let supportURL = URL(string: supportAbsoluteString),
+           let supportText = userInfo?.support.text {
+        
+        Link(destination: supportURL) {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Support Reqres")
+                Text(supportText)
                     .foregroundColor(Theme.text)
                     .font(.system(.body, design: .rounded).weight(.semibold))
                 
-                Text("https://reqres.in/#support-heading")
+                Text(supportAbsoluteString)
+                    .multilineTextAlignment(.leading)
             }
             
             Spacer()
@@ -67,9 +105,8 @@ private extension DetailView {
             Symbols.link
                 .font(.system(.title3, design: .rounded))
         }
+        }
     }
-    
-    
     
     var background: some View {
         Theme.background.ignoresSafeArea()
@@ -84,7 +121,7 @@ private extension DetailView {
         Text("First Name")
             .font(.system(.body, design: .rounded).weight(.semibold))
         
-        Text(user.firstName)
+        Text(userInfo?.data.firstName ?? "-")
             .font(.system(.subheadline, design: .rounded))
     }
     
@@ -93,7 +130,7 @@ private extension DetailView {
         Text("Last Name")
             .font(.system(.body, design: .rounded).weight(.semibold))
         
-        Text(user.lastName)
+        Text(userInfo?.data.lastName ?? "-")
             .font(.system(.subheadline, design: .rounded))
     }
     
@@ -102,7 +139,7 @@ private extension DetailView {
         Text("Email")
             .font(.system(.body, design: .rounded).weight(.semibold))
         
-        Text(user.firstName)
+        Text(userInfo?.data.email ?? "-")
             .font(.system(.subheadline, design: .rounded))
     }
 }
@@ -111,15 +148,17 @@ private extension DetailView {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            DetailView(user: dev.previewUser)
-                .preferredColorScheme(.dark)
-            
-            DetailView(user: dev.previewUser)
-                .preferredColorScheme(.light)
-            
+        NavigationView {
+            Group {
+                DetailView(user: dev.previewUserDetail)
+                    .preferredColorScheme(.dark)
+                
+                DetailView(user: dev.previewUserDetail)
+                    .preferredColorScheme(.light)
+                
+            }
+            .previewLayout(.sizeThatFits)
         }
-        .previewLayout(.sizeThatFits)
         
     }
 }

@@ -32,4 +32,10 @@ class DeveloperPreview {
         return users.data
     }
     
+    var previewUserDetail: UserDetailResponse {
+        let userDetail = try! StaticJSONMapper.decode(file: "SingleUser", type: UserDetailResponse.self)
+        
+        return userDetail
+    }
+    
 }
