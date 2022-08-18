@@ -12,6 +12,7 @@ struct PeopleView: View {
     private let columns = Array(repeating: GridItem(.flexible()), count: 2)
     
     @State private var users: [User] = []
+    @State private var showCreateUser = false
     
     var body: some View {
         NavigationView {
@@ -26,6 +27,9 @@ struct PeopleView: View {
                     .padding()
                 }
             }
+            .sheet(isPresented: $showCreateUser, content: {
+                CreateView()
+            })
             .navigationTitle("People")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
@@ -63,6 +67,7 @@ private extension PeopleView {
     var createPerson: some View {
         Button {
             //NEW PERSON
+            showCreateUser.toggle()
         } label: {
             Symbols.plus
                 .font(.system(.headline, design: .rounded).bold()
