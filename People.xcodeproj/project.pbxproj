@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB163C0528B0042200307A79 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB163C0428B0042200307A79 /* NetworkingManager.swift */; };
 		AB45277228A2D54100BC7156 /* PeopleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB45277128A2D54100BC7156 /* PeopleApp.swift */; };
 		AB45277428A2D54100BC7156 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB45277328A2D54100BC7156 /* ContentView.swift */; };
 		AB45277628A2D54400BC7156 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB45277528A2D54400BC7156 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB163C0428B0042200307A79 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		AB45276E28A2D54100BC7156 /* People.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = People.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB45277128A2D54100BC7156 /* PeopleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleApp.swift; sourceTree = "<group>"; };
 		AB45277328A2D54100BC7156 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB163C0328B0041500307A79 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				AB163C0428B0042200307A79 /* NetworkingManager.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		AB45276528A2D54100BC7156 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +124,7 @@
 		ABBBCE7328A813A7009B7580 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				AB163C0328B0041500307A79 /* API */,
 				ABF81D2C28A9B764004212FA /* Views */,
 				ABF81D2528A82453004212FA /* Mapper */,
 				ABF81D2228A82432004212FA /* Model */,
@@ -322,6 +333,7 @@
 				ABF81D2728A82462004212FA /* StaticJSONMapper.swift in Sources */,
 				ABF81D3128AABE2A004212FA /* PreviewProvider.swift in Sources */,
 				AB45278028A2D95B00BC7156 /* Symbols.swift in Sources */,
+				AB163C0528B0042200307A79 /* NetworkingManager.swift in Sources */,
 				ABF81D2928A9AE6E004212FA /* PeopleView.swift in Sources */,
 				ABDEF4A128AEFF5D009E332C /* CreateView.swift in Sources */,
 				AB45278328A2DB0800BC7156 /* Theme.swift in Sources */,

@@ -36,14 +36,24 @@ struct PeopleView: View {
                     createPerson
                 }
             }
+//            .onAppear {
+//                do {
+//                    let res = try StaticJSONMapper.decode(file: "Users", type: UsersResponse.self)
+//                    users = res.data
+//
+//                } catch {
+//                    //TODO: - Handle Error
+//                    print(error)
+//                }
+//            }
             .onAppear {
-                do {
-                    let res = try StaticJSONMapper.decode(file: "Users", type: UsersResponse.self)
-                    users = res.data
-                    
-                } catch {
-                    //TODO: - Handle Error
-                    print(error)
+                NetworkingManager.shared.request("https://reqres.in/api/users", type: UsersResponse.self) { res in
+                    switch res {
+                    case.success(let response):
+                        users = response.data
+                    case.failure(let error):
+                        print(error)
+                    }
                 }
             }
         }
