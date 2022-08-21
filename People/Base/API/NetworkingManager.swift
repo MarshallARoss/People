@@ -54,7 +54,6 @@ class NetworkingManager {
         
         dataTask.resume()
     }
-    
 }
 
 extension NetworkingManager {

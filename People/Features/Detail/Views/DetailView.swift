@@ -9,9 +9,9 @@ import SwiftUI
 
 struct DetailView: View {
     
-    let user: UserDetailResponse
-    @State private var userInfo: UserDetailResponse?
-    
+    let userID: Int
+    //@State private var userInfo: UserDetailResponse?
+    @StateObject private var vm: DetailViewModel = DetailViewModel()
     
     var body: some View {
         ZStack {
@@ -34,15 +34,19 @@ struct DetailView: View {
                 .padding()
             }
         }
-        .navigationBarTitle(user.data.firstName ?? "Details")
+        .navigationBarTitle(vm.userInfo?.data.firstName ?? "Details")
         .onAppear {
-            do {
-                userInfo = try StaticJSONMapper.decode(file: "SingleUser", type: UserDetailResponse.self)
-            } catch {
-                //Handle Errors
-                print(error)
-            }
+            vm.fetchUserDetails(for: userID)
         }
+//        .onAppear {
+//            do {
+//                userInfo = try StaticJSONMapper.decode(file: "SingleUser", type: UserDetailResponse.self)
+//            } catch {
+//                //Handle Errors
+//                print(error)
+//            }
+//        }
+       
     }
 }
 
@@ -52,7 +56,7 @@ private extension DetailView {
         
         VStack(alignment: .leading, spacing: 8) {
             
-            PillView(id: userInfo?.data.id ?? 0)
+            PillView(id: vm.userInfo?.data.id ?? 0)
             
             Group {
                 firstName
@@ -67,7 +71,7 @@ private extension DetailView {
     
     @ViewBuilder
     var avatarImage: some View {
-        if let avatarAbsoluteString = userInfo?.data.avatar,
+        if let avatarAbsoluteString = vm.userInfo?.data.avatar,
            let avatarURL = URL(string: avatarAbsoluteString) {
             AsyncImage(url: avatarURL) { image in
                 image
@@ -77,7 +81,7 @@ private extension DetailView {
                     .clipped()
             } placeholder: {
                 ProgressView()
-                    .frame(width: .infinity, height: 250)
+                    .frame(maxWidth: .infinity, idealHeight: 250)
             }
             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         }
@@ -86,9 +90,9 @@ private extension DetailView {
     @ViewBuilder
     var link: some View {
         
-        if let supportAbsoluteString = userInfo?.support.url,
+        if let supportAbsoluteString = vm.userInfo?.support.url,
            let supportURL = URL(string: supportAbsoluteString),
-           let supportText = userInfo?.support.text {
+           let supportText = vm.userInfo?.support.text {
         
         Link(destination: supportURL) {
             VStack(alignment: .leading, spacing: 8) {
@@ -121,7 +125,7 @@ private extension DetailView {
         Text("First Name")
             .font(.system(.body, design: .rounded).weight(.semibold))
         
-        Text(userInfo?.data.firstName ?? "-")
+        Text(vm.userInfo?.data.firstName ?? "-")
             .font(.system(.subheadline, design: .rounded))
     }
     
@@ -130,7 +134,7 @@ private extension DetailView {
         Text("Last Name")
             .font(.system(.body, design: .rounded).weight(.semibold))
         
-        Text(userInfo?.data.lastName ?? "-")
+        Text(vm.userInfo?.data.lastName ?? "-")
             .font(.system(.subheadline, design: .rounded))
     }
     
@@ -139,7 +143,7 @@ private extension DetailView {
         Text("Email")
             .font(.system(.body, design: .rounded).weight(.semibold))
         
-        Text(userInfo?.data.email ?? "-")
+        Text(vm.userInfo?.data.email ?? "-")
             .font(.system(.subheadline, design: .rounded))
     }
 }
@@ -150,10 +154,10 @@ struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             Group {
-                DetailView(user: dev.previewUserDetail)
+                DetailView(userID: dev.previewUserDetail.data.id)
                     .preferredColorScheme(.dark)
                 
-                DetailView(user: dev.previewUserDetail)
+                DetailView(userID: dev.previewUserDetail.data.id)
                     .preferredColorScheme(.light)
                 
             }
