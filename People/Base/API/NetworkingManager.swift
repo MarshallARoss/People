@@ -14,14 +14,44 @@ class NetworkingManager {
     //Keeps another networking manager from being initiated.
     private init() {}
     
-    func request<T: Codable>(_ absoluteURL: String,
+    func request(methodType: MethodType = .GET, _ absoluteURL: String, completion: @escaping (Result<Void, Error>) -> ()) {
+        guard let url = URL(string: absoluteURL) else { completion(.failure(NetworkingError.invalidURL))
+            return
+        }
+        
+        let request = buildRequest(from: url, methodType: methodType)
+
+        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            if let error = error {
+                completion(.failure(NetworkingError.custom(error: error)))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, (200...300) ~= response.statusCode else {
+                let statusCode = (response as! HTTPURLResponse).statusCode
+                completion(.failure(NetworkingError.invalidStatusCode(statusCode: statusCode)))
+                return
+            }
+           
+            completion(.success(()))
+           
+        }
+        
+        dataTask.resume()
+    }
+    
+    
+    
+    func request<T: Codable>(methodType: MethodType = .GET ,_ absoluteURL: String,
                              type: T.Type,
                              completion: @escaping (Result<T, Error>) -> Void) {
         guard let url = URL(string: absoluteURL) else { completion(.failure(NetworkingError.invalidURL))
             return
         }
        
-        let request = URLRequest(url: url)
+        let request = buildRequest(from: url, methodType: methodType)
+      
         
         let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
             
@@ -66,3 +96,30 @@ extension NetworkingManager {
     }
 }
 
+extension NetworkingManager {
+    enum MethodType {
+        case GET
+        case POST(data: Data?)
+    }
+}
+
+
+private extension NetworkingManager {
+    
+    func buildRequest(from Url: URL, methodType: MethodType) -> URLRequest {
+        
+        var request = URLRequest(url: Url)
+
+        switch methodType {
+        case .GET:
+            request.httpMethod = "GET"
+        case .POST(let data):
+            request.httpMethod = "POST"
+            request.httpBody = data
+        }
+        
+    return request
+        
+    }
+    
+}
