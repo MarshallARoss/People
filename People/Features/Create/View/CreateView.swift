@@ -37,6 +37,7 @@ struct CreateView: View {
                     dismissView()
                 }
             }
+            .alert(isPresented: $vm.hasError, error: vm.error) { }
         }
     }
 }

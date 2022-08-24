@@ -45,6 +45,11 @@ struct PeopleView: View {
             .onAppear(perform: {
                 vm.fetchUsers()
             })
+            .alert(isPresented: $vm.hasError, error: vm.error) {
+                Button("Retry") {
+                    vm.fetchUsers()
+                }
+            }
 //            .onAppear {
 //                do {
 //                    let res = try StaticJSONMapper.decode(file: "Users", type: UsersResponse.self)

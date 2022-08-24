@@ -38,6 +38,7 @@ struct DetailView: View {
         .onAppear {
             vm.fetchUserDetails(for: userID)
         }
+        .alert(isPresented: $vm.hasError, error: vm.error) { }
 //        .onAppear {
 //            do {
 //                userInfo = try StaticJSONMapper.decode(file: "SingleUser", type: UserDetailResponse.self)
