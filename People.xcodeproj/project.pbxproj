@@ -19,6 +19,7 @@
 		AB94C30F28B4218B005BF1DA /* NewPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94C30E28B4218B005BF1DA /* NewPerson.swift */; };
 		AB94C31428B4243F005BF1DA /* CreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94C31328B4243F005BF1DA /* CreateViewModel.swift */; };
 		ABDD414328B6C46E00670CC2 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDD414228B6C46E00670CC2 /* CheckmarkView.swift */; };
+		ABDD414628B6C77D00670CC2 /* CreateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDD414528B6C77D00670CC2 /* CreateValidator.swift */; };
 		ABDEF4A128AEFF5D009E332C /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDEF4A028AEFF5D009E332C /* CreateView.swift */; };
 		ABF81D1A28A822C0004212FA /* SingleUser.json in Resources */ = {isa = PBXBuildFile; fileRef = ABF81D1928A822C0004212FA /* SingleUser.json */; };
 		ABF81D1C28A822D0004212FA /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = ABF81D1B28A822D0004212FA /* Users.json */; };
@@ -48,6 +49,7 @@
 		AB94C31328B4243F005BF1DA /* CreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewModel.swift; sourceTree = "<group>"; };
 		ABBBCE7C28A81585009B7580 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		ABDD414228B6C46E00670CC2 /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
+		ABDD414528B6C77D00670CC2 /* CreateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateValidator.swift; sourceTree = "<group>"; };
 		ABDEF4A028AEFF5D009E332C /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		ABF81D1928A822C0004212FA /* SingleUser.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SingleUser.json; sourceTree = "<group>"; };
 		ABF81D1B28A822D0004212FA /* Users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Users.json; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 		ABBBCE7628A813B5009B7580 /* Create */ = {
 			isa = PBXGroup;
 			children = (
+				ABDD414428B6C76700670CC2 /* Validator */,
 				AB94C31228B4242E005BF1DA /* ViewModel */,
 				AB94C31128B4242A005BF1DA /* View */,
 				AB94C31028B42424005BF1DA /* Model */,
@@ -245,6 +248,14 @@
 				AB94C30928B2B1C0005BF1DA /* PeopleViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		ABDD414428B6C76700670CC2 /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				ABDD414528B6C77D00670CC2 /* CreateValidator.swift */,
+			);
+			path = Validator;
 			sourceTree = "<group>";
 		};
 		ABF81D1628A82209004212FA /* JSON */ = {
@@ -384,6 +395,7 @@
 				AB45278028A2D95B00BC7156 /* Symbols.swift in Sources */,
 				AB94C31428B4243F005BF1DA /* CreateViewModel.swift in Sources */,
 				AB163C0528B0042200307A79 /* NetworkingManager.swift in Sources */,
+				ABDD414628B6C77D00670CC2 /* CreateValidator.swift in Sources */,
 				ABF81D2928A9AE6E004212FA /* PeopleView.swift in Sources */,
 				ABDEF4A128AEFF5D009E332C /* CreateView.swift in Sources */,
 				AB45278328A2DB0800BC7156 /* Theme.swift in Sources */,

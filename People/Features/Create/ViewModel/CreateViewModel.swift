@@ -11,29 +11,46 @@ final class CreateViewModel: ObservableObject {
     
     @Published var person = NewPerson()
     @Published private(set) var state: SubmissionState?
-    @Published private(set) var error: NetworkingManager.NetworkingError?
+    @Published private(set) var error: FormError?
     @Published var hasError = false
     
+    private let validator = CreateValidator()
     
     func create() {
-        state = .submitting
-        let encoder = JSONEncoder()
-        encoder.keyEncodingStrategy = .convertToSnakeCase
-        let data = try? encoder.encode(person)
         
-        NetworkingManager.shared.request(methodType: .POST(data: data), "https://reqres.in/api/users?delay=3") { [weak self] res in
-            switch res {
-            case .success:
-                self?.state = .successful
-                break
-            case .failure(let error):
-                self?.state = .unsuccessful
-                print(error)
-                self?.error = error as? NetworkingManager.NetworkingError
-                self?.hasError = true
-                break
+        do {
+           
+            try validator.validate(person)
+            
+            state = .submitting
+          
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            let data = try? encoder.encode(person)
+            
+            NetworkingManager.shared.request(methodType: .POST(data: data), "https://reqres.in/api/users?delay=3") { [weak self] res in
+                switch res {
+                case .success:
+                    self?.state = .successful
+                    break
+                case .failure(let error):
+                    self?.state = .unsuccessful
+                    print(error)
+                    if let networkingError = error as? NetworkingManager.NetworkingError {
+                        self?.error = .networking(error: networkingError)
+                    }
+                    self?.hasError = true
+                    break
+                }
             }
+        } catch {
+            print(error)
+            if let validationError = error as? CreateValidator.CreateValidatorError {
+                self.error = .validation(error: validationError)
+            }
+            self.hasError = true
         }
+    
     }
 }
 
@@ -46,3 +63,19 @@ extension CreateViewModel {
 }
 
 
+extension CreateViewModel {
+    enum FormError: LocalizedError {
+        case networking(error: LocalizedError)
+        case validation(error: LocalizedError)
+        
+    }
+}
+
+extension CreateViewModel.FormError {
+    var errorDescription: String? {
+        switch self {
+        case .networking(let err), .validation(let err):
+            return err.errorDescription
+        }
+    }
+}
