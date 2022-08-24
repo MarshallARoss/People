@@ -19,18 +19,22 @@ struct PeopleView: View {
         NavigationView {
             ZStack {
                 background
-                ScrollView {
-                    LazyVGrid(columns: columns, spacing: 16) {
-                        ForEach(vm.users, id: \.id) { user in
-                            NavigationLink {
-                                DetailView(userID: user.id)
-                            } label: {
-                                PersonCellView(user: user)
+                
+                if vm.isLoading {
+                    ProgressView()
+                } else {
+                    ScrollView {
+                        LazyVGrid(columns: columns, spacing: 16) {
+                            ForEach(vm.users, id: \.id) { user in
+                                NavigationLink {
+                                    DetailView(userID: user.id)
+                                } label: {
+                                    PersonCellView(user: user)
+                                }
                             }
-
                         }
+                        .padding()
                     }
-                    .padding()
                 }
             }
             .sheet(isPresented: $showCreateUser, content: {
@@ -50,6 +54,7 @@ struct PeopleView: View {
                     vm.fetchUsers()
                 }
             }
+            
 //            .onAppear {
 //                do {
 //                    let res = try StaticJSONMapper.decode(file: "Users", type: UsersResponse.self)
@@ -87,6 +92,7 @@ private extension PeopleView {
                 .font(.system(.headline, design: .rounded).bold()
                 )
         }
+        .disabled(vm.isLoading)
 
     }
     
