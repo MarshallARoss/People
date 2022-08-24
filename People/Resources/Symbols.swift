@@ -13,6 +13,7 @@ enum Symbols {
     static let plus = Image(systemName: "plus")
     static let link = Image(systemName: "link")
     static let x = Image(systemName: "")
+    static let checkmark = Image(systemName: "checkmark")
 }
 
 

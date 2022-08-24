@@ -11,6 +11,7 @@ struct CreateView: View {
     
     @Environment(\.dismiss) private var dismissView
     @StateObject private var vm: CreateViewModel = CreateViewModel()
+    let successfulAction: () -> Void
     
     var body: some View {
         NavigationView {
@@ -36,6 +37,7 @@ struct CreateView: View {
             .onChange(of: vm.state) { formState in
                 if formState == .successful {
                     dismissView()
+                    successfulAction()
                 }
             }
             .overlay {
@@ -50,7 +52,7 @@ struct CreateView: View {
 
 struct CreateView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateView()
+        CreateView {}
     }
 }
 

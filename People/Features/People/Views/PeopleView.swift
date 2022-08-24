@@ -14,6 +14,7 @@ struct PeopleView: View {
     @StateObject var vm: PeopleViewModel = PeopleViewModel()
     
     @State private var showCreateUser = false
+    @State private var showSuccess = false
     
     var body: some View {
         NavigationView {
@@ -38,7 +39,11 @@ struct PeopleView: View {
                 }
             }
             .sheet(isPresented: $showCreateUser, content: {
-                CreateView()
+                CreateView {
+                    withAnimation(.spring().delay(0.25)) {
+                        self.showSuccess.toggle()
+                    }
+                }
             })
             .navigationTitle("People")
             .toolbar {
@@ -52,6 +57,19 @@ struct PeopleView: View {
             .alert(isPresented: $vm.hasError, error: vm.error) {
                 Button("Retry") {
                     vm.fetchUsers()
+                }
+            }
+            .overlay {
+                if showSuccess == true {
+                    CheckmarkView()
+                        .transition(.scale.combined(with: .opacity))
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                withAnimation(.spring()) {
+                                    self.showSuccess.toggle()
+                                }
+                            }
+                        }
                 }
             }
             

@@ -18,6 +18,7 @@
 		AB94C30D28B2B60B005BF1DA /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94C30C28B2B60B005BF1DA /* DetailViewModel.swift */; };
 		AB94C30F28B4218B005BF1DA /* NewPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94C30E28B4218B005BF1DA /* NewPerson.swift */; };
 		AB94C31428B4243F005BF1DA /* CreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94C31328B4243F005BF1DA /* CreateViewModel.swift */; };
+		ABDD414328B6C46E00670CC2 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDD414228B6C46E00670CC2 /* CheckmarkView.swift */; };
 		ABDEF4A128AEFF5D009E332C /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDEF4A028AEFF5D009E332C /* CreateView.swift */; };
 		ABF81D1A28A822C0004212FA /* SingleUser.json in Resources */ = {isa = PBXBuildFile; fileRef = ABF81D1928A822C0004212FA /* SingleUser.json */; };
 		ABF81D1C28A822D0004212FA /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = ABF81D1B28A822D0004212FA /* Users.json */; };
@@ -46,6 +47,7 @@
 		AB94C30E28B4218B005BF1DA /* NewPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPerson.swift; sourceTree = "<group>"; };
 		AB94C31328B4243F005BF1DA /* CreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewModel.swift; sourceTree = "<group>"; };
 		ABBBCE7C28A81585009B7580 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		ABDD414228B6C46E00670CC2 /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		ABDEF4A028AEFF5D009E332C /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		ABF81D1928A822C0004212FA /* SingleUser.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SingleUser.json; sourceTree = "<group>"; };
 		ABF81D1B28A822D0004212FA /* Users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Users.json; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				ABF81D2D28A9B76E004212FA /* PillView.swift */,
+				ABDD414228B6C46E00670CC2 /* CheckmarkView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				ABF81D2B28A9B615004212FA /* PersonCellView.swift in Sources */,
 				AB45277228A2D54100BC7156 /* PeopleApp.swift in Sources */,
 				ABF81D2128A823C1004212FA /* UsersResponse.swift in Sources */,
+				ABDD414328B6C46E00670CC2 /* CheckmarkView.swift in Sources */,
 				ABF81D2428A8243A004212FA /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
