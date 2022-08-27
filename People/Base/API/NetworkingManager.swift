@@ -14,12 +14,13 @@ class NetworkingManager {
     //Keeps another networking manager from being initiated.
     private init() {}
     
-    func request(methodType: MethodType = .GET, _ absoluteURL: String, completion: @escaping (Result<Void, Error>) -> ()) {
-        guard let url = URL(string: absoluteURL) else { completion(.failure(NetworkingError.invalidURL))
+    func request(_ endpoint: Endpoint, completion: @escaping (Result<Void, Error>) -> ()) {
+      
+        guard let url = endpoint.url else { completion(.failure(NetworkingError.invalidURL))
             return
         }
         
-        let request = buildRequest(from: url, methodType: methodType)
+        let request = buildRequest(from: url, methodType: endpoint.methodType)
 
         let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
             
@@ -43,14 +44,14 @@ class NetworkingManager {
     
     
     
-    func request<T: Codable>(methodType: MethodType = .GET ,_ absoluteURL: String,
+    func request<T: Codable>(_ endpoint: Endpoint,
                              type: T.Type,
                              completion: @escaping (Result<T, Error>) -> Void) {
-        guard let url = URL(string: absoluteURL) else { completion(.failure(NetworkingError.invalidURL))
+        guard let url = endpoint.url else { completion(.failure(NetworkingError.invalidURL))
             return
         }
        
-        let request = buildRequest(from: url, methodType: methodType)
+        let request = buildRequest(from: url, methodType: endpoint.methodType)
       
         
         let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -97,13 +98,6 @@ extension NetworkingManager {
     }
 }
 
-extension NetworkingManager {
-    enum MethodType {
-        case GET
-        case POST(data: Data?)
-    }
-}
-
 extension NetworkingManager.NetworkingError {
     var errorDescription: String? {
         switch self {
@@ -125,7 +119,7 @@ extension NetworkingManager.NetworkingError {
 
 private extension NetworkingManager {
     
-    func buildRequest(from Url: URL, methodType: MethodType) -> URLRequest {
+    func buildRequest(from Url: URL, methodType: Endpoint.MethodType) -> URLRequest {
         
         var request = URLRequest(url: Url)
 

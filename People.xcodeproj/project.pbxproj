@@ -18,6 +18,7 @@
 		AB94C30D28B2B60B005BF1DA /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94C30C28B2B60B005BF1DA /* DetailViewModel.swift */; };
 		AB94C30F28B4218B005BF1DA /* NewPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94C30E28B4218B005BF1DA /* NewPerson.swift */; };
 		AB94C31428B4243F005BF1DA /* CreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB94C31328B4243F005BF1DA /* CreateViewModel.swift */; };
+		ABD9748728B9CEDF009CA2AA /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD9748628B9CEDF009CA2AA /* Endpoint.swift */; };
 		ABDD414328B6C46E00670CC2 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDD414228B6C46E00670CC2 /* CheckmarkView.swift */; };
 		ABDD414628B6C77D00670CC2 /* CreateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDD414528B6C77D00670CC2 /* CreateValidator.swift */; };
 		ABDD414928B8059900670CC2 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDD414828B8059800670CC2 /* HapticsManager.swift */; };
@@ -51,6 +52,7 @@
 		AB94C30E28B4218B005BF1DA /* NewPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPerson.swift; sourceTree = "<group>"; };
 		AB94C31328B4243F005BF1DA /* CreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewModel.swift; sourceTree = "<group>"; };
 		ABBBCE7C28A81585009B7580 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		ABD9748628B9CEDF009CA2AA /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		ABDD414228B6C46E00670CC2 /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		ABDD414528B6C77D00670CC2 /* CreateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateValidator.swift; sourceTree = "<group>"; };
 		ABDD414828B8059800670CC2 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				AB163C0428B0042200307A79 /* NetworkingManager.swift */,
+				ABD9748628B9CEDF009CA2AA /* Endpoint.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				ABF81D2128A823C1004212FA /* UsersResponse.swift in Sources */,
 				ABDD414328B6C46E00670CC2 /* CheckmarkView.swift in Sources */,
 				ABF81D2428A8243A004212FA /* User.swift in Sources */,
+				ABD9748728B9CEDF009CA2AA /* Endpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,7 +494,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -549,6 +553,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
