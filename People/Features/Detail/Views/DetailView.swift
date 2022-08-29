@@ -39,8 +39,11 @@ struct DetailView: View {
             }
         }
         .navigationBarTitle(vm.userInfo?.data.firstName ?? "Details")
-        .onAppear {
-            vm.fetchUserDetails(for: userID)
+//        .onAppear {
+//            vm.fetchUserDetails(for: userID)
+//        }
+        .task {
+            await vm.fetchUserDetails(for: userID)
         }
         .alert(isPresented: $vm.hasError, error: vm.error) { }
 //        .onAppear {

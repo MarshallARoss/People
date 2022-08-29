@@ -27,7 +27,7 @@ extension Endpoint {
         case .people, .create:
             return "/api/users"
         case .detail(let id):
-            return "api/users/\(id)"
+            return "/api/users/\(id)"
         }
     }
     

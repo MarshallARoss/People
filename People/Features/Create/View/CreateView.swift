@@ -32,35 +32,37 @@ struct CreateView: View {
                             .foregroundStyle(.red)
                     }
                 }
-            
-            Section {
-                Button("Submit") {
-                    focusedField = nil
-                    vm.create()
+                
+                Section {
+                    Button("Submit") {
+                        focusedField = nil
+                        Task {
+                            await vm.create()
+                        }
+                    }
                 }
             }
-        }
-        .disabled(vm.state == .submitting)
-        .navigationTitle("Create")
-        .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                dismiss
+            .disabled(vm.state == .submitting)
+            .navigationTitle("Create")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    dismiss
+                }
             }
-        }
-        .onChange(of: vm.state) { formState in
-            if formState == .successful {
-                dismissView()
-                successfulAction()
+            .onChange(of: vm.state) { formState in
+                if formState == .successful {
+                    dismissView()
+                    successfulAction()
+                }
             }
-        }
-        .overlay {
-            if vm.state == .submitting {
-                ProgressView()
+            .overlay {
+                if vm.state == .submitting {
+                    ProgressView()
+                }
             }
+            .alert(isPresented: $vm.hasError, error: vm.error) {}
         }
-        .alert(isPresented: $vm.hasError, error: vm.error) {}
     }
-}
 }
 
 extension CreateView {
