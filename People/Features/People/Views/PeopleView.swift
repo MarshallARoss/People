@@ -32,10 +32,20 @@ struct PeopleView: View {
                                     DetailView(userID: user.id)
                                 } label: {
                                     PersonCellView(user: user)
+                                        .task {
+                                            if vm.hasReachedEnd(of: user) && !vm.isFetching {
+                                                await vm.fetchNextSetOfUsers()
+                                            }
+                                        }
                                 }
                             }
                         }
                         .padding()
+                    }
+                    .overlay(alignment: .bottom) {
+                        if vm.isFetching {
+                            ProgressView()
+                        }
                     }
                 }
             }
@@ -139,3 +149,5 @@ private extension PeopleView {
         .disabled(vm.isLoading)
     }
 }
+
+
