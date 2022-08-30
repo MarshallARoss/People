@@ -15,6 +15,7 @@ struct PeopleView: View {
     
     @State private var showCreateUser = false
     @State private var showSuccess = false
+    @State private var hasAppeared = false
     
     var body: some View {
         NavigationView {
@@ -51,14 +52,20 @@ struct PeopleView: View {
                 ToolbarItem(placement: .primaryAction) {
                     createPerson
                 }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    refreshButton
+                }
             }
-//            .onAppear {
-//                Task {
-//                    await vm.fetchUsers()
-//                }
-//            }
+            //            .onAppear {
+            //                Task {
+            //                    await vm.fetchUsers()
+            //                }
+            //            }
             .task {
-                await vm.fetchUsers()
+                if !hasAppeared {
+                    await vm.fetchUsers()
+                    hasAppeared = true
+                }
             }
             .alert(isPresented: $vm.hasError, error: vm.error) {
                 Button("Retry") {
@@ -81,16 +88,16 @@ struct PeopleView: View {
                 }
             }
             
-//            .onAppear {
-//                do {
-//                    let res = try StaticJSONMapper.decode(file: "Users", type: UsersResponse.self)
-//                    users = res.data
-//
-//                } catch {
-//                    //TODO: - Handle Error
-//                    print(error)
-//                }
-//            }
+            //            .onAppear {
+            //                do {
+            //                    let res = try StaticJSONMapper.decode(file: "Users", type: UsersResponse.self)
+            //                    users = res.data
+            //
+            //                } catch {
+            //                    //TODO: - Handle Error
+            //                    print(error)
+            //                }
+            //            }
         }
     }
 }
@@ -119,7 +126,16 @@ private extension PeopleView {
                 )
         }
         .disabled(vm.isLoading)
-
     }
     
+    var refreshButton: some View {
+        Button {
+            Task {
+                await vm.fetchUsers()
+            }
+        } label: {
+            Symbols.refresh
+        }
+        .disabled(vm.isLoading)
+    }
 }
