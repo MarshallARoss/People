@@ -94,7 +94,6 @@ final class PeopleViewModel: ObservableObject {
     func hasReachedEnd(of user: User) -> Bool {
         users.last?.id == user.id
     }
-    
 }
 
 extension PeopleViewModel {
