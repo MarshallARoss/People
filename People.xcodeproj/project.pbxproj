@@ -26,6 +26,7 @@
 		ABDD414E28B8070000670CC2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDD414D28B8070000670CC2 /* SettingsView.swift */; };
 		ABDD415128B807F200670CC2 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDD415028B807F200670CC2 /* UserDefaults.swift */; };
 		ABDEF4A128AEFF5D009E332C /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDEF4A028AEFF5D009E332C /* CreateView.swift */; };
+		ABF5557A28C147D700938F80 /* CreateFormValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF5557928C147D700938F80 /* CreateFormValidatorTests.swift */; };
 		ABF81D1A28A822C0004212FA /* SingleUser.json in Resources */ = {isa = PBXBuildFile; fileRef = ABF81D1928A822C0004212FA /* SingleUser.json */; };
 		ABF81D1C28A822D0004212FA /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = ABF81D1B28A822D0004212FA /* Users.json */; };
 		ABF81D1F28A8238F004212FA /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF81D1E28A8238F004212FA /* UserDetail.swift */; };
@@ -72,6 +73,7 @@
 		ABDD414D28B8070000670CC2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		ABDD415028B807F200670CC2 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		ABDEF4A028AEFF5D009E332C /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
+		ABF5557928C147D700938F80 /* CreateFormValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFormValidatorTests.swift; sourceTree = "<group>"; };
 		ABF81D1928A822C0004212FA /* SingleUser.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SingleUser.json; sourceTree = "<group>"; };
 		ABF81D1B28A822D0004212FA /* Users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Users.json; sourceTree = "<group>"; };
 		ABF81D1E28A8238F004212FA /* UserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 		ABA663BB28C1098800EA54C2 /* PeopleTestsUnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				ABF5557828C147AC00938F80 /* Form */,
 				ABA663C328C1099F00EA54C2 /* Mapper */,
 			);
 			path = PeopleTestsUnitTests;
@@ -330,6 +333,14 @@
 				ABDD415028B807F200670CC2 /* UserDefaults.swift */,
 			);
 			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		ABF5557828C147AC00938F80 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				ABF5557928C147D700938F80 /* CreateFormValidatorTests.swift */,
+			);
+			path = Form;
 			sourceTree = "<group>";
 		};
 		ABF81D1628A82209004212FA /* JSON */ = {
@@ -524,6 +535,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF5557A28C147D700938F80 /* CreateFormValidatorTests.swift in Sources */,
 				ABA663C528C109AD00EA54C2 /* JSONMapperTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
