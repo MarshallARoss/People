@@ -23,7 +23,7 @@ class CreateFormValidatorTests: XCTestCase {
     func test_with_empty_person_first_name_error_thrown() {
         let person = NewPerson()
         
-        XCTAssertThrowsError(try validator.validate(person), "Error for an empty first name should be thrown")
+        XCTAssertThrowsError(try validator.validate(person), "Error for an empty first name should be thrown.")
         
         do {
             _ = try validator.validate(person)
