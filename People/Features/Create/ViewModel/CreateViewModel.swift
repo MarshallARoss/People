@@ -58,7 +58,9 @@ final class CreateViewModel: ObservableObject {
     //ASYNC AWAIT
     @MainActor
     func create() async {
+       
         do {
+            
             try validator.validate(person)
             
             state = .submitting
@@ -72,6 +74,7 @@ final class CreateViewModel: ObservableObject {
             state = .successful
             
         } catch {
+      
             self.hasError = true
             self.state = .unsuccessful
             
