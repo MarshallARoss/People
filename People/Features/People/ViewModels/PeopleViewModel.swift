@@ -14,6 +14,8 @@ final class PeopleViewModel: ObservableObject {
     @Published private(set) var viewState: ViewState?
     @Published var hasError = false
     
+    private let networkingManager: NetworkingManagerImpl
+    
     var isLoading: Bool {
         viewState == .loading
     }
@@ -22,11 +24,15 @@ final class PeopleViewModel: ObservableObject {
         viewState == .fetching
     }
     
-    private var page = 1
-    private var totalPages: Int?
+    init(networkingManager: NetworkingManagerImpl = NetworkingManager.shared) {
+        self.networkingManager = networkingManager
+    }
     
+    private(set) var page = 1
+    private(set) var totalPages: Int?
+    
+    //CLOSURE SYNTAX
     /*
-     //CLOSURE SYNTAX
      func fetchUsers() {
      isLoading = true
      NetworkingManager.shared.request(.people, type: UsersResponse.self) { [weak self] res in
@@ -54,7 +60,7 @@ final class PeopleViewModel: ObservableObject {
         defer { viewState = .finished }
         
         do {
-            let response = try await NetworkingManager.shared.request(.people(page: page), type: UsersResponse.self)
+            let response = try await networkingManager.request(session: .shared, .people(page: page), type: UsersResponse.self)
             self.users = response.data
             self.totalPages = response.totalPages
         } catch {
@@ -78,7 +84,7 @@ final class PeopleViewModel: ObservableObject {
         page += 1
         
         do {
-            let response = try await NetworkingManager.shared.request(.people(page: page), type: UsersResponse.self)
+            let response = try await networkingManager.request(session: .shared, .people(page: page), type: UsersResponse.self)
             self.totalPages = response.totalPages
             self.users += response.data
         } catch {
