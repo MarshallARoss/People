@@ -14,8 +14,14 @@ final class DetailViewModel: ObservableObject {
     @Published private(set) var isLoading: Bool = false
     @Published var hasError = false
     
+    private let networkingManager: NetworkingManagerImpl
+    
+    init(networkingManager: NetworkingManagerImpl = NetworkingManager.shared) {
+        self.networkingManager = networkingManager
+    }
+    
+    //CLOSURE
     /*
-     //CLOSURE
     func fetchUserDetails(for id: Int) {
         isLoading = true
         NetworkingManager.shared.request(.detail(id: id), type: UserDetailResponse.self) { [weak self] res in
@@ -42,7 +48,7 @@ final class DetailViewModel: ObservableObject {
         defer { isLoading = false }
         
         do {
-            self.userInfo = try await NetworkingManager.shared.request(.detail(id: id), type: UserDetailResponse.self)
+            self.userInfo = try await networkingManager.request(session: .shared, .detail(id: id), type: UserDetailResponse.self)
         } catch {
             self.hasError = true
             if let networkingError = error as? NetworkingManager.NetworkingError {
