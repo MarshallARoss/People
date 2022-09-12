@@ -1,14 +1,15 @@
 //
-//  NetworkingManagerUserResponseFailureMock.swift
+//  NetworkingManagerUserDetailsFailureMock.swift
 //  PeopleTestsUnitTests
 //
-//  Created by Marshall  on 9/7/22.
+//  Created by Marshall  on 9/8/22.
 //
 
-import Foundation
-@testable import People
+#if DEBUG
 
-class NetworkingManagerUserResponseFailureMock: NetworkingManagerImpl {
+import Foundation
+
+class NetworkingManagerUserDetailsFailureMock: NetworkingManagerImpl {
     
     func request<T>(session: URLSession, _ endpoint: Endpoint, type: T.Type) async throws -> T where T : Decodable, T : Encodable {
         throw NetworkingManager.NetworkingError.invalidURL
@@ -17,6 +18,6 @@ class NetworkingManagerUserResponseFailureMock: NetworkingManagerImpl {
     func request(session: URLSession, _ endpoint: Endpoint) async throws {
         
     }
-    
-    
 }
+
+#endif

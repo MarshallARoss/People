@@ -5,8 +5,9 @@
 //  Created by Marshall  on 9/9/22.
 //
 
+#if DEBUG
+
 import Foundation
-@testable import People
 
 class NetworkingManagerCreateFailureMock: NetworkingManagerImpl {
     
@@ -18,3 +19,5 @@ class NetworkingManagerCreateFailureMock: NetworkingManagerImpl {
         throw NetworkingManager.NetworkingError.invalidURL
     }
 }
+
+#endif

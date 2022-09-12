@@ -11,7 +11,20 @@ struct PeopleView: View {
     
     private let columns = Array(repeating: GridItem(.flexible()), count: 2)
     
-    @StateObject var vm: PeopleViewModel = PeopleViewModel()
+    @StateObject var vm: PeopleViewModel
+    
+    init() {
+        #if DEBUG
+        if UITestingHelper.isUITesting {
+            let mock: NetworkingManagerImpl = UITestingHelper.isNetworkingSuccessful ? NetworkingManagerUserResponseSuccessMock() : NetworkingManagerUserResponseFailureMock()
+            _vm = StateObject(wrappedValue: PeopleViewModel(networkingManager: mock))
+        } else {
+        _vm = StateObject(wrappedValue: PeopleViewModel())
+        }
+        #else
+        _vm = StateObject(wrappedValue: PeopleViewModel())
+        #endif
+    }
     
     @State private var showCreateUser = false
     @State private var showSuccess = false
@@ -32,6 +45,7 @@ struct PeopleView: View {
                                     DetailView(userID: user.id)
                                 } label: {
                                     PersonCellView(user: user)
+                                        .accessibilityIdentifier("item_\(user.id)")
                                         .task {
                                             if vm.hasReachedEnd(of: user) && !vm.isFetching {
                                                 await vm.fetchNextSetOfUsers()
@@ -41,6 +55,7 @@ struct PeopleView: View {
                             }
                         }
                         .padding()
+                        .accessibilityIdentifier("peopleGrid")
                     }
                     .overlay(alignment: .bottom) {
                         if vm.isFetching {
