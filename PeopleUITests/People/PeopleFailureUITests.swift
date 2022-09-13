@@ -15,7 +15,7 @@ class PeopleFailureUITests: XCTestCase {
         continueAfterFailure = false
         app = XCUIApplication()
         app.launchArguments = ["-ui-testing"]
-        app.launchEnvironment = ["-networking-success" : "0"]
+        app.launchEnvironment = ["-people-networking-success" : "0"]
         app.launch()
     }
     
@@ -30,6 +30,5 @@ class PeopleFailureUITests: XCTestCase {
         XCTAssertTrue(alert.staticTexts["URL isn't valid"].exists)
         XCTAssertTrue(alert.buttons["Retry"].exists)
     }
-    
     
 }
