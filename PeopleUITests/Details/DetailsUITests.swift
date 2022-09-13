@@ -26,5 +26,15 @@ class DetailsUITests: XCTestCase {
         app = nil
     }
     
+    func test_user_info_is_correct_when_item_is_tappen_screen_loads() {
+        let grid = app.otherElements["peopleGrid"]
+        
+        XCTAssertTrue(grid.waitForExistence(timeout: 5), "The grid should exist")
+        
+        
+        
+        
+        
+    }
     
 }
