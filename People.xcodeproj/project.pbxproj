@@ -20,6 +20,7 @@
 		AB1A042828CFDD8C00B777AA /* CreateValidatorFailureMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43CC2A28CC1782007C403A /* CreateValidatorFailureMock.swift */; };
 		AB1A042A28CFE43D00B777AA /* PeopleFailureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1A042928CFE43D00B777AA /* PeopleFailureUITests.swift */; };
 		AB1A042D28D0E22600B777AA /* DetailsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1A042C28D0E22600B777AA /* DetailsUITests.swift */; };
+		AB1A042F28D2318D00B777AA /* DetailsFailureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1A042E28D2318D00B777AA /* DetailsFailureUITests.swift */; };
 		AB43CC1A28CAC488007C403A /* DetailsViewModelSuccessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43CC1928CAC488007C403A /* DetailsViewModelSuccessTests.swift */; };
 		AB43CC1C28CAF451007C403A /* DetailsViewModelFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43CC1B28CAF451007C403A /* DetailsViewModelFailureTests.swift */; };
 		AB43CC1F28CC13A7007C403A /* CreateViewModelSuccessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43CC1E28CC13A7007C403A /* CreateViewModelSuccessTests.swift */; };
@@ -85,6 +86,7 @@
 		AB1A041A28CFDA2000B777AA /* UITestingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingHelper.swift; sourceTree = "<group>"; };
 		AB1A042928CFE43D00B777AA /* PeopleFailureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleFailureUITests.swift; sourceTree = "<group>"; };
 		AB1A042C28D0E22600B777AA /* DetailsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsUITests.swift; sourceTree = "<group>"; };
+		AB1A042E28D2318D00B777AA /* DetailsFailureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFailureUITests.swift; sourceTree = "<group>"; };
 		AB43CC1428CAC3DB007C403A /* NetworkingManagerUsersDetailsResponseSuccessMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerUsersDetailsResponseSuccessMock.swift; sourceTree = "<group>"; };
 		AB43CC1628CAC44B007C403A /* NetworkingManagerUserDetailsFailureMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerUserDetailsFailureMock.swift; sourceTree = "<group>"; };
 		AB43CC1928CAC488007C403A /* DetailsViewModelSuccessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModelSuccessTests.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				AB1A042C28D0E22600B777AA /* DetailsUITests.swift */,
+				AB1A042E28D2318D00B777AA /* DetailsFailureUITests.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -747,6 +750,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB43CC3528CC1B99007C403A /* PeopleScreenUITests.swift in Sources */,
+				AB1A042F28D2318D00B777AA /* DetailsFailureUITests.swift in Sources */,
 				AB43CC3728CC1B99007C403A /* PeopleUITestsLaunchTests.swift in Sources */,
 				AB1A042D28D0E22600B777AA /* DetailsUITests.swift in Sources */,
 				AB1A042A28CFE43D00B777AA /* PeopleFailureUITests.swift in Sources */,

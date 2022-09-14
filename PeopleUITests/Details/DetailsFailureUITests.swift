@@ -1,15 +1,16 @@
 //
-//  DetailsUITests.swift
+//  DetailsFailureUITests.swift
 //  PeopleUITests
 //
-//  Created by Marshall  on 9/13/22.
+//  Created by Marshall  on 9/14/22.
 //
+
 
 import XCTest
 import SwiftUI
 
-class DetailsUITests: XCTestCase {
-
+class DetailsFailureUITests: XCTestCase {
+    
     private var app: XCUIApplication!
     
     override func setUp() {
@@ -18,7 +19,7 @@ class DetailsUITests: XCTestCase {
         app.launchArguments = ["-ui-testing"]
         app.launchEnvironment = [
             "-people-networking-success" : "1",
-            "-details-networking-success" : "1"
+            "-details-networking-success" : "0"
         ]
         app.launch()
     }
@@ -27,7 +28,7 @@ class DetailsUITests: XCTestCase {
         app = nil
     }
     
-    func test_user_info_is_correct_when_item_is_tappen_screen_loads() {
+    func test_alert_shown_when_screen_fails_to_load() {
         
         let grid = app.otherElements["peopleGrid"]
         
@@ -38,14 +39,24 @@ class DetailsUITests: XCTestCase {
         
         gridItems.firstMatch.tap()
         
-        XCTAssertTrue(app.staticTexts["Details"].exists)
-        XCTAssertTrue(app.staticTexts["1"].exists)
+        let alert = app.alerts.firstMatch
+      
+        XCTAssertTrue(alert.waitForExistence(timeout: 3), "There should be an alert")
+        
+        XCTAssertTrue(alert.staticTexts["URL isn't valid"].exists)
+        XCTAssertTrue(alert.buttons["OK"].exists)
+        
+        XCTAssertTrue(app.staticTexts["0"].exists)
         XCTAssertTrue(app.staticTexts["First Name"].exists)
-        XCTAssertTrue(app.staticTexts["George"].exists)
         XCTAssertTrue(app.staticTexts["Last Name"].exists)
-        XCTAssertTrue(app.staticTexts["Bluth"].exists)
         XCTAssertTrue(app.staticTexts["Email"].exists)
-        XCTAssertTrue(app.staticTexts["george.bluth@reqres.in"].exists)
+        
+        let textPlaceholderPredicate = NSPredicate(format: "label CONTAINS '-'")
+        
+        let placeholderItems = app.staticTexts.containing(textPlaceholderPredicate)
+        
+        XCTAssertEqual(placeholderItems.count, 3, "There should be 3 placeholdrs.")
+
     }
-    
+        
 }
