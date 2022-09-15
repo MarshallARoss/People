@@ -56,7 +56,6 @@ class DetailsFailureUITests: XCTestCase {
         let placeholderItems = app.staticTexts.containing(textPlaceholderPredicate)
         
         XCTAssertEqual(placeholderItems.count, 3, "There should be 3 placeholdrs.")
-
     }
         
 }

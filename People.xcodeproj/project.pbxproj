@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB0FEB8728D3784C002672AA /* CreateScreenUIValidTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FEB8628D3784C002672AA /* CreateScreenUIValidTests.swift */; };
 		AB163C0528B0042200307A79 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB163C0428B0042200307A79 /* NetworkingManager.swift */; };
 		AB1A041B28CFDA2000B777AA /* UITestingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1A041A28CFDA2000B777AA /* UITestingHelper.swift */; };
 		AB1A041F28CFDD5B00B777AA /* NetworkingManagerCreateSuccessMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43CC2328CC14CA007C403A /* NetworkingManagerCreateSuccessMock.swift */; };
@@ -82,6 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB0FEB8628D3784C002672AA /* CreateScreenUIValidTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScreenUIValidTests.swift; sourceTree = "<group>"; };
 		AB163C0428B0042200307A79 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		AB1A041A28CFDA2000B777AA /* UITestingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingHelper.swift; sourceTree = "<group>"; };
 		AB1A042928CFE43D00B777AA /* PeopleFailureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleFailureUITests.swift; sourceTree = "<group>"; };
@@ -168,6 +170,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB0FEB8528D37839002672AA /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				AB0FEB8628D3784C002672AA /* CreateScreenUIValidTests.swift */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
 		AB163C0328B0041500307A79 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +292,7 @@
 		AB43CC3328CC1B99007C403A /* PeopleUITests */ = {
 			isa = PBXGroup;
 			children = (
+				AB0FEB8528D37839002672AA /* Create */,
 				AB1A042B28D0E20D00B777AA /* Details */,
 				AB1A041728CFD84300B777AA /* People */,
 			);
@@ -751,6 +762,7 @@
 			files = (
 				AB43CC3528CC1B99007C403A /* PeopleScreenUITests.swift in Sources */,
 				AB1A042F28D2318D00B777AA /* DetailsFailureUITests.swift in Sources */,
+				AB0FEB8728D3784C002672AA /* CreateScreenUIValidTests.swift in Sources */,
 				AB43CC3728CC1B99007C403A /* PeopleUITestsLaunchTests.swift in Sources */,
 				AB1A042D28D0E22600B777AA /* DetailsUITests.swift in Sources */,
 				AB1A042A28CFE43D00B777AA /* PeopleFailureUITests.swift in Sources */,
