@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		AB0FEB8728D3784C002672AA /* CreateScreenUIValidTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FEB8628D3784C002672AA /* CreateScreenUIValidTests.swift */; };
+		AB0FEB8928D4CE16002672AA /* CreateScreenFormValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FEB8828D4CE16002672AA /* CreateScreenFormValidationTests.swift */; };
+		AB0FEB8B28D4D190002672AA /* CreateFailureUINetowrkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FEB8A28D4D190002672AA /* CreateFailureUINetowrkTests.swift */; };
+		AB0FEB8D28D4D462002672AA /* CreateScreenValidUINetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FEB8C28D4D462002672AA /* CreateScreenValidUINetworkTests.swift */; };
 		AB163C0528B0042200307A79 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB163C0428B0042200307A79 /* NetworkingManager.swift */; };
 		AB1A041B28CFDA2000B777AA /* UITestingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1A041A28CFDA2000B777AA /* UITestingHelper.swift */; };
 		AB1A041F28CFDD5B00B777AA /* NetworkingManagerCreateSuccessMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43CC2328CC14CA007C403A /* NetworkingManagerCreateSuccessMock.swift */; };
@@ -84,6 +87,9 @@
 
 /* Begin PBXFileReference section */
 		AB0FEB8628D3784C002672AA /* CreateScreenUIValidTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScreenUIValidTests.swift; sourceTree = "<group>"; };
+		AB0FEB8828D4CE16002672AA /* CreateScreenFormValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScreenFormValidationTests.swift; sourceTree = "<group>"; };
+		AB0FEB8A28D4D190002672AA /* CreateFailureUINetowrkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFailureUINetowrkTests.swift; sourceTree = "<group>"; };
+		AB0FEB8C28D4D462002672AA /* CreateScreenValidUINetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScreenValidUINetworkTests.swift; sourceTree = "<group>"; };
 		AB163C0428B0042200307A79 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		AB1A041A28CFDA2000B777AA /* UITestingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingHelper.swift; sourceTree = "<group>"; };
 		AB1A042928CFE43D00B777AA /* PeopleFailureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleFailureUITests.swift; sourceTree = "<group>"; };
@@ -174,6 +180,9 @@
 			isa = PBXGroup;
 			children = (
 				AB0FEB8628D3784C002672AA /* CreateScreenUIValidTests.swift */,
+				AB0FEB8828D4CE16002672AA /* CreateScreenFormValidationTests.swift */,
+				AB0FEB8A28D4D190002672AA /* CreateFailureUINetowrkTests.swift */,
+				AB0FEB8C28D4D462002672AA /* CreateScreenValidUINetworkTests.swift */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -762,10 +771,13 @@
 			files = (
 				AB43CC3528CC1B99007C403A /* PeopleScreenUITests.swift in Sources */,
 				AB1A042F28D2318D00B777AA /* DetailsFailureUITests.swift in Sources */,
+				AB0FEB8B28D4D190002672AA /* CreateFailureUINetowrkTests.swift in Sources */,
 				AB0FEB8728D3784C002672AA /* CreateScreenUIValidTests.swift in Sources */,
 				AB43CC3728CC1B99007C403A /* PeopleUITestsLaunchTests.swift in Sources */,
+				AB0FEB8928D4CE16002672AA /* CreateScreenFormValidationTests.swift in Sources */,
 				AB1A042D28D0E22600B777AA /* DetailsUITests.swift in Sources */,
 				AB1A042A28CFE43D00B777AA /* PeopleFailureUITests.swift in Sources */,
+				AB0FEB8D28D4D462002672AA /* CreateScreenValidUINetworkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,33 +9,54 @@ import XCTest
 
 class CreateScreenUIValidTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+    private var app: XCUIApplication!
+    
+    override func setUp() {
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+        app = XCUIApplication()
+        app.launchArguments = ["-ui-testing"]
+        app.launchEnvironment = [
+            "-people-networking-success" : "1"
+        ]
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    
+    override func tearDown() {
+        app = nil
     }
+    
+    func test_when_create_is_tapped_create_view_is_presented() {
+        
+        let createButton = app.buttons["createButton"]
+        XCTAssertTrue(createButton.waitForExistence(timeout: 5), "The create button should be visible on the screen.")
+        
+        createButton.tap()
+        
+        XCTAssertTrue(app.navigationBars["Create"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["submitButton"].exists)
+        XCTAssertTrue(app.buttons["dismissButton"].exists)
+        XCTAssertTrue(app.textFields["firstNameTextField"].exists)
+        XCTAssertTrue(app.textFields["lastNameTextField"].exists)
+        XCTAssertTrue(app.textFields["jobTextField"].exists)
+        
+        
+    }
+    
+    
+    func test_when_done_button_tapped_view_is_dismissed() {
+     
+        let createButton = app.buttons["createButton"]
+        XCTAssertTrue(createButton.waitForExistence(timeout: 5), "The create button should be visible on the screen.")
+       
+        createButton.tap()
+        
+        let dismissButton = app.buttons["dismissButton"]
+        XCTAssertTrue(dismissButton.exists)
+        
+        XCTAssertTrue(app.navigationBars["People"].waitForExistence(timeout: 5), "Navigation Bar Should Be People")
+    }
+    
+    
+    
+    
 }

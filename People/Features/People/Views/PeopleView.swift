@@ -57,6 +57,9 @@ struct PeopleView: View {
                         .padding()
                         .accessibilityIdentifier("peopleGrid")
                     }
+                    .refreshable {
+                        await vm.fetchUsers()
+                    }
                     .overlay(alignment: .bottom) {
                         if vm.isFetching {
                             ProgressView()
@@ -106,7 +109,7 @@ struct PeopleView: View {
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                 withAnimation(.spring()) {
-                                    self.showSuccess.toggle()
+                                    self.showSuccess = false
                                 }
                             }
                         }
@@ -151,6 +154,7 @@ private extension PeopleView {
                 )
         }
         .disabled(vm.isLoading)
+        .accessibilityIdentifier("createButton")
     }
     
     var refreshButton: some View {
